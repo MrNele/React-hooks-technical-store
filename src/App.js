@@ -10,8 +10,40 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Products from './pages/Products';
 import ProductDetails from './pages/ProductDetails';
-
 //components
+import Header from './components/Header';
 export default function App() {
-  return <h1>hello from app component</h1>;
+  return <Router>
+    <Header />
+    <Switch>
+    <Route exact path="/">
+      <Home/>
+    </Route>
+    <Route path="/about">
+      <About/>
+    </Route>
+    <Route path="/cart">
+      <Cart/>
+    </Route>
+    <Route path="/checkout">
+      <Checkout/>
+    </Route>
+    <Route path="/checkout">
+      <Checkout/>
+    </Route>
+    <Route path="/login">
+      <Login/>
+    </Route>
+    <Route exact path="/products">
+      <Products/>
+    </Route>
+    <Route path="/products/:id" children={<ProductDetails></ProductDetails>}>
+
+    </Route>
+
+    <Route path="*">
+      <Error />
+    </Route>
+    </Switch>
+  </Router>;
 }
